@@ -2,41 +2,74 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Student Attendance System Design System */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Core Colors - Campus inspired theme */
+    --background: 245 20% 98%;
+    --foreground: 210 40% 8%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 8%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 8%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary - Academic Blue */
+    --primary: 213 94% 48%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 213 94% 65%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary - Professional Gray */
+    --secondary: 210 10% 93%;
+    --secondary-foreground: 210 40% 8%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Success - Geofence Green */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    --success-glow: 142 76% 50%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Warning - Attention Orange */
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    --warning-glow: 38 92% 65%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Error - Alert Red */
+    --error: 0 84% 50%;
+    --error-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --muted: 210 10% 93%;
+    --muted-foreground: 215 16% 47%;
 
-    --radius: 0.5rem;
+    --accent: 213 94% 95%;
+    --accent-foreground: 213 94% 48%;
+
+    --destructive: 0 84% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 20% 88%;
+    --input: 214 20% 88%;
+    --ring: 213 94% 48%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-success: linear-gradient(135deg, hsl(var(--success)), hsl(var(--success-glow)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-glow)) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(var(--card)) 0%, hsl(210 20% 99%) 100%);
+
+    /* Shadows */
+    --shadow-sm: 0 2px 4px -1px hsl(var(--primary) / 0.1);
+    --shadow-md: 0 4px 12px -2px hsl(var(--primary) / 0.15);
+    --shadow-lg: 0 10px 25px -5px hsl(var(--primary) / 0.2);
+    --shadow-success: 0 4px 12px -2px hsl(var(--success) / 0.25);
+    --shadow-error: 0 4px 12px -2px hsl(var(--error) / 0.25);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --radius: 12px;
 
     --sidebar-background: 0 0% 98%;
 
@@ -56,41 +89,103 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* Dark mode for campus theme */
+    --background: 210 40% 8%;
+    --foreground: 245 20% 98%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 210 40% 10%;
+    --card-foreground: 245 20% 98%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 210 40% 10%;
+    --popover-foreground: 245 20% 98%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 213 94% 65%;
+    --primary-foreground: 210 40% 8%;
+    --primary-glow: 213 94% 80%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 210 10% 15%;
+    --secondary-foreground: 245 20% 98%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --success: 142 76% 50%;
+    --success-glow: 142 76% 65%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --warning: 38 92% 65%;
+    --warning-glow: 38 92% 80%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --error: 0 84% 65%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --muted: 210 10% 15%;
+    --muted-foreground: 215 16% 65%;
+
+    --accent: 213 94% 15%;
+    --accent-foreground: 213 94% 65%;
+
+    --destructive: 0 84% 65%;
+    --destructive-foreground: 210 40% 8%;
+
+    --border: 214 20% 20%;
+    --input: 214 20% 20%;
+    --ring: 213 94% 65%;
+  }
+}
+
+/* Custom component styles */
+@layer components {
+  .status-pill {
+    @apply inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium transition-all duration-300;
+  }
+
+  .status-pill.success {
+    @apply bg-success/10 text-success border border-success/20;
+    box-shadow: var(--shadow-success);
+  }
+
+  .status-pill.error {
+    @apply bg-error/10 text-error border border-error/20;
+    box-shadow: var(--shadow-error);
+  }
+
+  .status-pill.warning {
+    @apply bg-warning/10 text-warning border border-warning/20;
+  }
+
+  .face-scan-frame {
+    @apply relative border-4 rounded-3xl overflow-hidden;
+    border-color: hsl(var(--primary));
+    background: linear-gradient(145deg, hsl(var(--primary) / 0.1), hsl(var(--primary-glow) / 0.05));
+    box-shadow: 0 0 0 2px hsl(var(--primary) / 0.2), inset 0 2px 4px hsl(var(--primary) / 0.1);
+  }
+
+  .face-scan-frame.scanning {
+    animation: pulse-border 2s infinite;
+  }
+
+  .face-scan-frame.success {
+    border-color: hsl(var(--success));
+    background: linear-gradient(145deg, hsl(var(--success) / 0.1), hsl(var(--success-glow) / 0.05));
+    box-shadow: 0 0 0 2px hsl(var(--success) / 0.3), inset 0 2px 4px hsl(var(--success) / 0.1);
+  }
+
+  .attendance-card {
+    background: var(--gradient-card);
+    box-shadow: var(--shadow-md);
+    transition: var(--transition-smooth);
+  }
+
+  .attendance-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+  }
+
+  .hero-button {
+    background: var(--gradient-primary);
+    box-shadow: var(--shadow-md);
+    transition: var(--transition-bounce);
+  }
+
+  .hero-button:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px) scale(1.02);
   }
 }
 
@@ -100,6 +195,31 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  button, input, textarea, select {
+    transition: var(--transition-smooth);
+  }
+}
+
+/* Keyframe animations */
+@keyframes pulse-border {
+  0%, 100% {
+    border-color: hsl(var(--primary));
+    box-shadow: 0 0 0 2px hsl(var(--primary) / 0.2);
+  }
+  50% {
+    border-color: hsl(var(--primary-glow));
+    box-shadow: 0 0 0 4px hsl(var(--primary-glow) / 0.4);
+  }
+}
+
+@keyframes scan-line {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh);
   }
 }
