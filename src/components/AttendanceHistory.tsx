@@ -11,6 +11,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
+import { useAttendanceHistory } from '@/hooks/useStudent';
 
 interface AttendanceRecord {
   id: string;
@@ -71,9 +72,25 @@ const mockAttendanceData: AttendanceRecord[] = [
   },
 ];
 
-export const AttendanceHistory: React.FC = () => {
+interface AttendanceHistoryProps {
+  studentId: string;
+}
+
+export const AttendanceHistory: React.FC<AttendanceHistoryProps> = ({ studentId }) => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [attendanceData] = useState<AttendanceRecord[]>(mockAttendanceData);
+  const { attendance, loading, error } = useAttendanceHistory(studentId);
+  
+  // Convert Supabase attendance data to the expected format
+  const attendanceData: AttendanceRecord[] = attendance.map(record => ({
+    id: record.id,
+    date: record.date,
+    time: record.created_at ? new Date(record.created_at).toLocaleTimeString() : '--:--:--',
+    status: record.status === 'present' ? 'Present' : 'Absent',
+    location: { lat: 40.7128, lng: -74.0060, accuracy: 5 }, // Mock location data
+    faceScore: record.face_verified ? 95.6 : 0,
+    webauthnVerified: record.webauthn_verified,
+    deviceInfo: 'Chrome/Windows', // Mock device info
+  }));
 
   const filteredData = attendanceData.filter(record =>
     record.date.includes(searchTerm) ||
@@ -107,6 +124,29 @@ export const AttendanceHistory: React.FC = () => {
   const presentCount = filteredData.filter(r => r.status === 'Present').length;
   const absentCount = filteredData.filter(r => r.status === 'Absent').length;
   const attendanceRate = filteredData.length > 0 ? (presentCount / filteredData.length) * 100 : 0;
+
+  if (loading) {
+    return (
+      <div className="space-y-6">
+        <div className="text-center py-8">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+          <p className="text-muted-foreground">Loading attendance history...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="space-y-6">
+        <div className="text-center py-8">
+          <XCircle className="w-12 h-12 text-error mx-auto mb-4" />
+          <p className="text-error">Error loading attendance history</p>
+          <p className="text-muted-foreground text-sm">{error}</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6">

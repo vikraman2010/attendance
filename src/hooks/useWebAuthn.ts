@@ -31,7 +31,10 @@ const base64ToArrayBuffer = (base64: string): ArrayBuffer => {
 
 export const useWebAuthn = () => {
   const [state, setState] = useState<WebAuthnState>({
-    isSupported: typeof window !== 'undefined' && 'credentials' in navigator && 'create' in navigator.credentials,
+    isSupported: typeof window !== 'undefined' && 
+                 'credentials' in navigator && 
+                 'create' in navigator.credentials &&
+                 window.PublicKeyCredential !== undefined,
     isRegistering: false,
     isAuthenticating: false,
     isRegistered: false,
