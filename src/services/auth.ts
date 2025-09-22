@@ -17,7 +17,7 @@ const MOCK_USERS: User[] = [
   {
     id: '1',
     email: 'vikramank23cb@psnacet.edu.in',
-    name: 'Vikram Kumar',
+    name: 'Vikram',
     role: 'worker',
     employeeId: 'CW001'
   },

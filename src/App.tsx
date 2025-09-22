@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import Login from "./pages/Login";
 import Permissions from "./pages/Permissions";
 import LocationRegistration from "./pages/LocationRegistration";
+import Attendance from "./pages/Attendance";
 import AuthGate from "./components/AuthGate";
 import NotFound from "./pages/NotFound";
 import { setupWindsurfOfficeLocation } from "./utils/locationSetup";
@@ -41,6 +42,14 @@ const App = () => {
             element={
               <AuthGate>
                 <LocationRegistration />
+              </AuthGate>
+            }
+          />
+          <Route
+            path="/attendance"
+            element={
+              <AuthGate>
+                <Attendance />
               </AuthGate>
             }
           />

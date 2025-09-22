@@ -1,8 +1,8 @@
 // Supabase Configuration
 // For demo purposes, using mock configuration
 export const SUPABASE_CONFIG = {
-  url: 'https://demo-project.supabase.co',
-  anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0'
+  url: 'https://jtuhxexvoskpwhdrmcmm.supabase.co',
+  anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp0dWh4ZXh2b3NrcHdoZHJtY21tIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc1ODAyODcsImV4cCI6MjA3MzE1NjI4N30.nZGMTng_Is0rYbkoDmgzsImegGalHWhB8IDDoJy_-Fk'
 }
 
 // Instructions for setup:
